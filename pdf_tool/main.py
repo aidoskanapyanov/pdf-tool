@@ -29,7 +29,18 @@ def ls():
 
 
 @app.command(no_args_is_help=True)
-def merge(pdfs: List[Path], output_file: str):
+def merge(
+    pdfs: List[Path] = typer.Argument(
+        ...,
+        help="Input pdf names in a desired order",
+        show_default=False,
+    ),
+    output_file: str = typer.Argument(
+        ...,
+        help="Output file name",
+        show_default=False,
+    ),
+):
     """
     Merge pdf files in a specified order
     """
