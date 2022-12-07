@@ -1,7 +1,8 @@
 import typer
-
+from .commands.docs import app as docs_app
 
 app = typer.Typer()
+app.add_typer(docs_app, name="docs", help="Generate documentation")
 
 
 @app.callback()
