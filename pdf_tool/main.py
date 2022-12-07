@@ -1,28 +1,25 @@
+from pathlib import Path
+
 import typer
+from rich import print
+
 from .commands.docs import app as docs_app
 
 app = typer.Typer()
 app.add_typer(docs_app, name="docs", help="Generate documentation")
 
 
-@app.callback()
-def callback():
-    """
-    Awesome Portal Gun
-    """
+def list_current_dir():
+    return [str(dir) for dir in Path(".").iterdir()]
 
 
 @app.command()
-def shoot():
+def ls():
     """
-    Shoot the portal gun
+    List files in current directory
     """
-    typer.echo("Shooting portal gun")
+    dirs = list_current_dir()
+    dirs.sort()
 
-
-@app.command()
-def load():
-    """
-    Load the portal gun
-    """
-    typer.echo("Loading portal gun")
+    typer.echo("Listing files in current directory:\n")
+    print(dirs)
