@@ -78,8 +78,8 @@ $ pdf-tool merge [OPTIONS] PDFS... OUTPUT_FILE
 
 **Arguments**:
 
-* `PDFS...`: [required]
-* `OUTPUT_FILE`: [required]
+* `PDFS...`: Input pdf names in a desired order  [required]
+* `OUTPUT_FILE`: Output file name  [required]
 
 **Options**:
 
