@@ -28,7 +28,7 @@ def ls():
     print(dirs)
 
 
-@app.command()
+@app.command(no_args_is_help=True)
 def merge(pdfs: List[Path], output_file: str):
     """
     Merge pdf files in a specified order

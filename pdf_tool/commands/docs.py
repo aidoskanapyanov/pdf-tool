@@ -6,7 +6,7 @@ import typer.core
 from click import Command, Group
 
 
-app = typer.Typer()
+app = typer.Typer(no_args_is_help=True)
 
 
 def get_docs_for_click(
