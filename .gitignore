@@ -1,3 +1,6 @@
+# Ignore vscode workspace settings
+.vscode/
+
 # Sample pdfs
 pdfs/
 
