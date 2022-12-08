@@ -31,12 +31,31 @@ def ls():
     print(dirs)
 
 
+def validate_extensions(pdfs):
+    exists = lambda file: file.suffix == ".pdf"
+    if not all(map(exists, pdfs)):
+        raise typer.BadParameter("Make sure all input files are in PDF format")
+
+
+def validate_paths(pdfs):
+    exists = lambda file: file.exists()
+    if not all(map(exists, pdfs)):
+        raise typer.BadParameter("Make sure all input files exist.")
+
+
+def validate_pdfs(pdfs: List[Path]):
+    validate_extensions(pdfs)
+    validate_paths(pdfs)
+    return pdfs
+
+
 @app.command(no_args_is_help=True)
 def merge(
     pdfs: List[Path] = typer.Argument(
         ...,
         help="Input pdf names in a desired order",
         show_default=False,
+        callback=validate_pdfs,
     ),
     output_file: str = typer.Argument(
         ...,
